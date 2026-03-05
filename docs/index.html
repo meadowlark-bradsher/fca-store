@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FCA Store v0</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>FCA Store v0</h1>
+        <p>
+          Versioned formal concept analysis store with lattice build and runtime query APIs.
+        </p>
+      </header>
+
+      <section>
+        <h2>Core Python API</h2>
+        <ul>
+          <li><code>put_incidence(version_id, objects, attributes, edges_present, edges_absent=None, meta=...)</code></li>
+          <li><code>build_lattice(version_id, method="nextclosure|ganter")</code></li>
+          <li><code>get_extent(version_id, attribute_ids)</code></li>
+          <li><code>get_intent(version_id, object_ids)</code></li>
+          <li><code>suggest_split_attributes(version_id, current_attribute_ids, remaining_object_ids=None)</code></li>
+          <li><code>diff_versions(v1, v2)</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>HTTP Endpoints</h2>
+        <ul>
+          <li><code>GET /versions</code></li>
+          <li><code>POST /versions/{id}/extent</code></li>
+          <li><code>POST /versions/{id}/intent</code></li>
+          <li><code>GET /versions/{id}/lattice/status</code></li>
+          <li><code>GET /versions/{id}/diff/{other}</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Storage Choice (v0)</h2>
+        <p>
+          SQLite is used for v0 simplicity and deterministic local execution. The interface is backend-agnostic
+          so PostgreSQL can be added later without changing callers.
+        </p>
+      </section>
+
+      <footer>
+        <p>Source: <a href="../README.md">README</a></p>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fca-store"
+version = "0.1.0"
+description = "Versioned FCA incidence store with lattice build and query APIs"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "FCA Store Contributors" }
+]
+dependencies = []
+
+[project.optional-dependencies]
+http = ["fastapi>=0.115,<1", "uvicorn>=0.35,<1"]
+test = ["pytest>=8.0,<9"]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
